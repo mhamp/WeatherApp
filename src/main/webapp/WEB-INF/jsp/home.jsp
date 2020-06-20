@@ -33,10 +33,10 @@
                             <tr>
                                 <td>${main.name}</td>
                                 <td>
-                                    ${main.main.temp}
+                                    ${main.main.temp} °C
                                 </td>
                                 <td>
-                                    ${main.main.humidity}
+                                    ${main.main.humidity} %
                                 </td>
                                 <td>
                                     <a type="button" class="btn btn-warning"
