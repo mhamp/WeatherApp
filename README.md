@@ -78,11 +78,9 @@ Follow the following steps to install and run the application:
 **1. How to install the application**
 
 1. Download or clone app from GitHub repository https://github.com/mhamp/weatherapp.git to your preferred IDE. Note app was developed on Intellij Community edition with its inherent limitations.  
-2. App is set to work with H2. The database is packaged with in the project jar and can be accessed through http://localhost:8080/h2-console. (If you want to use a different RDBMS you have to change the respective dependencies in the pom.xml and application properties under src/main/resources/application.properties.) 
-3. Have the user table populated with required fields foo and bar for username. For password use the service  by https://www.browserling.com/tools/bcrypt to encrypt the passwords: 
-    - '123455' for foo
-    - '654321' for bar
-    - 'admin' for admin
+2. App is set to work with H2. The database is packaged with in the project jar and can be accessed through http://localhost:8080/h2-console. 
+3. NOTE: If for any reason you want to use a different RDBMS you have to adjust the dependencies in the pom.xml and application.properties file to the desired databse. 
+
 
 
 **2. How to start the application**
