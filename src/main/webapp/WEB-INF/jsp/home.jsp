@@ -29,20 +29,20 @@
      					</tr>
      				</thead>
      				<tbody>
-                        <c:forEach items="${weatherdata}" var="main">
-                            <tr>
-                                <td>${main.name}</td>
-                                <td>
-                                    ${main.main.temp} °C
-                                </td>
-                                <td>
-                                    ${main.main.humidity} %
-                                </td>
-                                <td>
-                                    <a type="button" class="btn btn-warning"
-                                    href="/delete-city?id=${city.id}">Delete</a>
-                                </td>
-                            </tr>
+                            <c:forEach items="${weatherdata}" var="main" varStatus="status">
+                                <tr>
+                                    <td>${main.name}</td>
+                                    <td>
+                                        ${main.main.temp} &#176;C
+                                    </td>
+                                    <td>
+                                        ${main.main.humidity} %
+                                    </td>
+                                    <td>
+                                        <a type="button" class="btn btn-warning"
+                                        href="/delete-city?id=${cities[status.index].id}">Delete</a>
+                                    </td>
+                                </tr>
      					</c:forEach>
                             <tr>
                                 <td></td>
