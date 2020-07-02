@@ -22,15 +22,17 @@
      			<table class="table table-striped">
      				<thead>
      					<tr>
-     						<th width="27%">City</th>
-     						<th width="27%">Temperature</th>
-     						<th width="27%">Humidity</th>
+     						<th width="6%">Visual</th>
+     						<th width="25%">City</th>
+     						<th width="25%">Temperature</th>
+     						<th width="25%">Humidity</th>
      						<th width="20%">Actions</th>
      					</tr>
      				</thead>
      				<tbody>
                             <c:forEach items="${weatherdata}" var="main" varStatus="status">
                                 <tr>
+                                    <td><img src="icon/${main.weather[0].icon}@2x.png" style="width:30px; height: 30px;"></td>
                                     <td>${main.name}</td>
                                     <td>
                                         ${main.main.temp} &#176;C
@@ -45,6 +47,7 @@
                                 </tr>
      					</c:forEach>
                             <tr>
+                                <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
