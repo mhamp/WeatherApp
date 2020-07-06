@@ -47,7 +47,11 @@ public class HomeController {
 		model.put("name", name);
 		List<City> cities = cityService.getCitiesByUser(name);
 		model.put("cities", cities);
-		List<Long> owmIds = owmCityService.getOwmCityIds(cities);
+
+		List<Long> owmIds = cities.stream()
+				.map(i -> owmCityService.getCityByName(i.getName()))
+				.map(c -> c.getId())
+				.collect(Collectors.toList());
 		List<WeatherData> weatherData = weatherService.getWeatherByIds(owmIds);
 		model.put("weatherdata", weatherData);
 		return "home";
@@ -67,17 +71,19 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/add-city", method = RequestMethod.POST)
-	public String addCity(ModelMap model, City city, BindingResult result) {
+	public String addCity(ModelMap model, City searchedCity, BindingResult result) {
 
 		if (result.hasErrors()) {
 			return "city";
 		}
-		OwmCity owmCity = owmCityRepository.findByName(city.getName());
-		//System.out.println("ID of registered city:"+owmCity.getUid());
-		if (owmCity != null) {
-			city.setUserName(userService.getLoggedInUserName(model));
-			cityService.saveCity(city);
+
+		boolean valid = cityService.validateCity(model, searchedCity);
+
+		if(valid){
+			searchedCity.setUserName(userService.getLoggedInUserName(model));
+			cityService.saveCity(searchedCity);
 		}
+
 		return "redirect:/home";
 	}
 }

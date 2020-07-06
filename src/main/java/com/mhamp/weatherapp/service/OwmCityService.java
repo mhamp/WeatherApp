@@ -31,17 +31,8 @@ public class OwmCityService {
         return owmCityRepository.saveAll(cities);
     }
 
-    public OwmCity getCitiesByName(String name) {
-        return owmCityRepository.findByName(name);
+    public OwmCity getCityByName(String name) {
+        List<OwmCity> owmCities = owmCityRepository.findByName(name);
+        return owmCities.get(0);
     }
-
-    public List<Long> getOwmCityIds(List<City> cities){
-        List<Long> owmCityIds = new ArrayList<>();
-        for(City city : cities){
-            OwmCity owmCity = owmCityRepository.findByName(city.getName());
-            owmCityIds.add(owmCity.getId());
-        }
-        return owmCityIds;
-    }
-
 }
